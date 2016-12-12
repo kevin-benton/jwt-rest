@@ -1,0 +1,24 @@
+This repo is meant to be a starting point for getting a secured API up and running with JWT based auth. For ease of use,
+there are development settings that also include the browseable API of Django REST Framework and the default Django
+admin site.
+
+TODO:
+1. Allow creation of a new user not behind secured part of API.
+
+Setup:
+1. Install dependencies (jwt-rest directory): `pip install -r requirements/base.txt`
+2. Export settings (jwt-rest directory): `export DJANGO_SETTINGS_MODULE=jwt-rest.settings.dev`
+3. Run migrations (jwt-rest/jwt-rest directory): `./manage.py migrate`
+4. Create initial user (jwt-rest/jwt-rest directory): `./manage.py createsuperuser`
+5. Run server (jwt-rest/jwt-rest directory) :`./manage.py renserver`
+
+Receiving initial token:
+> curl -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"password123"}'
+  http://localhost:8000/api/1.0/auth/token
+
+Using token:
+> curl -H "Authorization: JWT <your_token>" http://localhost:8000/api/1.0/users/
+
+Refreshing token:
+> curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>","username":"admin","password":"password123"}'
+  http://localhost:8000/api/1.0/auth/token/refresh
