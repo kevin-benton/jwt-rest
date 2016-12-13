@@ -13,12 +13,10 @@ Setup:
 5. Run server (jwt-rest/jwt-rest directory) :`./manage.py renserver`
 
 Receiving initial token:
-> curl -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"password123"}'
-  http://localhost:8000/api/1.0/auth/token
+> curl -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"password123"}' http://localhost:8000/api/1.0/auth/token
 
 Using token:
 > curl -H "Authorization: JWT <your_token>" http://localhost:8000/api/1.0/users/
 
 Refreshing token:
-> curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>","username":"admin","password":"password123"}'
-  http://localhost:8000/api/1.0/auth/token/refresh
+> curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>"}' http://localhost:8000/api/1.0/auth/token/refresh

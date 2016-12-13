@@ -13,6 +13,6 @@ router.register(r'groups', views.GroupViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^auth/token', obtain_jwt_token),
+    url(r'^auth/token/obtain', obtain_jwt_token),
     url(r'^auth/token/refresh', refresh_jwt_token)
 ]
