@@ -33,11 +33,13 @@ BASE_APPS = [
     'django.contrib.messages',
 
     'rest_framework',
+    'corsheaders',
 
     'api_1_0',
 ]
 
 MIDDLEWARE_CLASSES = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -97,3 +99,5 @@ LOGIN_URL = '/'
 JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
